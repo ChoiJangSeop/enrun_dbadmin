@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://139.99.99.124:3306/tr_game_db
+    username: jangseop
+    password: 0367haha
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+
+logging.level:
+  org.hibernate.SQL: debug

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter @Setter
@@ -14,7 +13,7 @@ import java.util.Date;
 @Table(name = "userinfo")
 public class UserInfo {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "fdusernum")
     private Long id;
 
@@ -51,6 +50,13 @@ public class UserInfo {
         userInfo.option = option;
 
         return userInfo;
+    }
+
+    //== 비지니스 메서드 ==//
+    public void setAll(String UID, String nickname, int option) {
+        this.UID = UID;
+        this.nickname = nickname;
+        this.option = option;
     }
 
 }

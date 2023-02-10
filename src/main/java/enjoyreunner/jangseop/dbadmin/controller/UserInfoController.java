@@ -45,10 +45,16 @@ public class UserInfoController {
         return userInfoAssembler.toModel(findUserInfo);
     }
 
-    @PutMapping("/userinfo/{nickname}")
+    @PostMapping("/userinfo")
+    public EntityModel<UserInfoDto> newOne(@RequestBody UserInfoDto dto) {
+        UserInfo newUserInfo = userInfoService.create(dto.getUID(), dto.getNickname(), dto.getOption());
+        return userInfoAssembler.toModel(newUserInfo);
+    }
+
+    @PutMapping("/userinfo/{nickname}/{newNickname}")
     public ResponseEntity<?> replaceUserInfoByNickname(
-            @PathVariable String nickname, @RequestBody UserInfo userInfo) {
-        UserInfo replaceUserInfo = userInfoService.editUserNickname(nickname, userInfo.getNickname());
+            @PathVariable String nickname, @PathVariable String newNickname) {
+        UserInfo replaceUserInfo = userInfoService.editUserNickname(nickname, newNickname);
 
         EntityModel<UserInfoDto> entityModel = userInfoAssembler.toModel(replaceUserInfo);
 
@@ -57,4 +63,17 @@ public class UserInfoController {
                 .body(entityModel);
 
     }
+
+    @PutMapping("/userinfo/{id}")
+    public ResponseEntity<?> replaceUserInfo(
+            @PathVariable Long id, @RequestBody UserInfoDto dto) {
+        UserInfo replacedUserInfo = userInfoService.update(id, dto);
+
+        EntityModel<UserInfoDto> entityModel = userInfoAssembler.toModel(replacedUserInfo);
+
+        return ResponseEntity
+                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
+                .body(entityModel);
+    }
+
 }

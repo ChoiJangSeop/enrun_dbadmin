@@ -12,16 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -68,6 +64,27 @@ class UserInfoControllerTest {
     }
 
     @Test
+    public void 유저정보_단건생성() throws Exception {
+        // given
+        UserInfoDto dto = new UserInfoDto();
+        dto.setUID("testnewid");
+        dto.setNickname("testnickname");
+        dto.setAttribute(0);
+        dto.setOption(1);
+        String content = objectMapper.writeValueAsString(dto);
+
+        // when
+        mockMvc.perform(post("/userinfo")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+        // then
+                .andExpect(status().is2xxSuccessful());
+        Assertions.assertThat(userInfoRepository.findOneByNickname("testnickname").getUID()).isEqualTo("testnewid");
+    }
+
+    @Test
     public void 유저정보_닉네임변경() throws Exception {
         // given
         UserInfo testUserInfo = userInfoService.create("testId", "test", 1);
@@ -76,15 +93,36 @@ class UserInfoControllerTest {
         String content = objectMapper.writeValueAsString(dto);
 
         // when
-        mockMvc.perform(put("/userinfo/"+testUserInfo.getNickname())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(content)
-                .accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(put("/userinfo/"+testUserInfo.getNickname()+"/newTest")
+                .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
         // then
                 .andExpect(status().is2xxSuccessful());
 
         Assertions.assertThat(userInfoRepository.findOne(testUserInfo.getId()).getNickname()).isEqualTo("newTest");
+    }
+
+    @Test
+    public void 유저정보_단건수정() throws Exception {
+        // given
+        UserInfo testUserInfo = userInfoService.create("testId", "test", 1);
+        UserInfoDto dto = UserInfoDto.createDtoByUserInfo(testUserInfo);
+        dto.setNickname("newTest");
+        dto.setUID("newTestId");
+        String content = objectMapper.writeValueAsString(dto);
+
+        // when
+        mockMvc.perform(put("/userinfo/"+testUserInfo.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+
+        // then
+                .andExpect(status().is2xxSuccessful());
+
+        Assertions.assertThat(userInfoRepository.findOne(testUserInfo.getId()).getNickname()).isEqualTo("newTest");
+        Assertions.assertThat(userInfoRepository.findOne(testUserInfo.getId()).getUID()).isEqualTo("newTestId");
     }
 
 }

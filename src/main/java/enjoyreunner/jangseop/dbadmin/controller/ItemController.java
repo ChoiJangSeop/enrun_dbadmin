@@ -41,4 +41,10 @@ public class ItemController {
         return CollectionModel.of(items,
                 linkTo(methodOn(ItemController.class).all()).withSelfRel());
     }
+
+    @GetMapping("/items/name/{name}")
+    public EntityModel<ItemDto> oneByName(@PathVariable String name) {
+        Item findItem = itemRepository.findOneByName(name);
+        return itemAssembler.toModel(findItem);
+    }
 }

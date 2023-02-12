@@ -15,4 +15,13 @@ public class Item {
 
     @Column(name = "fditemname")
     private String name;
+
+    //== 생성메서드 ==//
+
+    public static Item createItem(String name) {
+        Item item = new Item();
+        item.name = name;
+
+        return item;
+    }
 }

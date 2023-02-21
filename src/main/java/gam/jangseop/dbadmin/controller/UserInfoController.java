@@ -22,6 +22,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserInfoController {
 
     private final UserInfoRepository userInfoRepository;
@@ -48,6 +49,8 @@ public class UserInfoController {
     @GetMapping("/userinfo/nickname/{nickname}")
     public EntityModel<UserInfoDto> oneByNickname(@PathVariable String nickname) {
         UserInfo findUserInfo = userInfoRepository.findOneByNickname(nickname);
+        if (findUserInfo == null) return null;
+
         return userInfoAssembler.toModel(findUserInfo);
     }
 

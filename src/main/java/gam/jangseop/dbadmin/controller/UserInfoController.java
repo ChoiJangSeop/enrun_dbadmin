@@ -45,6 +45,12 @@ public class UserInfoController {
         return userInfoAssembler.toModel(findUserInfo);
     }
 
+    @GetMapping("/userinfo/nickname/{nickname}")
+    public EntityModel<UserInfoDto> oneByNickname(@PathVariable String nickname) {
+        UserInfo findUserInfo = userInfoRepository.findOneByNickname(nickname);
+        return userInfoAssembler.toModel(findUserInfo);
+    }
+
     @PostMapping("/userinfo")
     public EntityModel<UserInfoDto> newOne(@RequestBody UserInfoDto dto) {
         UserInfo newUserInfo = userInfoService.create(dto.getUID(), dto.getNickname(), dto.getOption());

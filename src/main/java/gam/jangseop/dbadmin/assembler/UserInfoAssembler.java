@@ -22,6 +22,7 @@ public class UserInfoAssembler implements RepresentationModelAssembler<UserInfo,
                 userInfo.getOption());
         return EntityModel.of(dto,
                 linkTo(methodOn(UserInfoController.class).one(userInfo.getId())).withSelfRel(),
+                linkTo(methodOn(UserInfoController.class).oneByNickname(userInfo.getNickname())).withRel("nickname"),
                 linkTo(methodOn(UserInfoController.class).all()).withRel("userInfos"));
     }
 }

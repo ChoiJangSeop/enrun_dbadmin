@@ -64,6 +64,19 @@ class UserInfoControllerTest {
     }
 
     @Test
+    public void 유저정보_단건조회요청_닉네임() throws Exception {
+        // given
+        UserInfo userInfo = userInfoService.create("testid1", "test1", 1);
+
+        // when
+        mockMvc.perform(get("/userinfo/nickname/test1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                // then
+                .andExpect(jsonPath("$.id", is(userInfo.getId().intValue())));
+    }
+
+    @Test
     public void 유저정보_단건생성() throws Exception {
         // given
         UserInfoDto dto = new UserInfoDto();

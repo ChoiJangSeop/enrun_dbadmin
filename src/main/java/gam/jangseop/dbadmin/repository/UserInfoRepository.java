@@ -26,6 +26,8 @@ public class UserInfoRepository {
         List<UserInfo> resultList = em.createQuery("SELECT u FROM UserInfo u WHERE u.nickname = :nickname", UserInfo.class)
                 .setParameter("nickname", nickName)
                 .getResultList();
+
+        if (resultList.size() == 0) return null;
         return resultList.get(0);
     }
 

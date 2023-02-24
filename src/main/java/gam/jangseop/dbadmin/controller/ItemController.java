@@ -49,4 +49,15 @@ public class ItemController {
         Item findItem = itemRepository.findOneByName(name);
         return itemAssembler.toModel(findItem);
     }
+
+    @GetMapping("/items/search/{keyword}")
+    public CollectionModel<EntityModel<ItemDto>> search(@PathVariable String keyword) {
+        List<EntityModel<ItemDto>> items = itemRepository.findAll().stream()
+                .filter(item -> item.getName().contains(keyword))
+                .map(itemAssembler::toModel)
+                .collect(Collectors.toList());
+
+        return CollectionModel.of(items,
+                linkTo(methodOn(ItemController.class).search(keyword)).withSelfRel());
+    }
 }

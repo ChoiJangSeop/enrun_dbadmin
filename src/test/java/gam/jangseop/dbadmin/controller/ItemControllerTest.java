@@ -14,8 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -74,5 +73,20 @@ class ItemControllerTest {
                 .andDo(print())
         // then
                 .andExpect(jsonPath("$.id", is(item1.getId().intValue())));
+    }
+
+    @Test
+    public void 아이템_검색() throws Exception {
+        // given
+        Item 빨간떡볶이 = itemService.create("빨간떡볶이");
+        Item 초록떡볶이 = itemService.create("초록떡볶이");
+        Item 빨간주먹밥 = itemService.create("빨간주먹밥");
+
+        // when
+        mockMvc.perform(get("/items/search/빨간")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+        // then
+                .andExpect(jsonPath("$._embedded.itemDtoList", hasSize(2)));
     }
 }

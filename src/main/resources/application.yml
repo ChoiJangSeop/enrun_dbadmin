@@ -6,11 +6,14 @@ spring:
     password:
 
   jpa:
-    hibernate:
-      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
+        hbm2ddl:
+          auto: create
+jwt:
+  secret:
+    key: D(G+KbPeShVkYp3s6v9y$B&E)H@McQfT
 
 
 logging.level:

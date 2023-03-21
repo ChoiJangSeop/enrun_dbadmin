@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter @Setter
 @Builder
@@ -23,7 +24,7 @@ public class SignResponse {
 
     private String password;
 
-    private List<Authority> roles = new ArrayList<>();
+    private List<String> roles = new ArrayList<>();
 
     private String token;
 
@@ -32,6 +33,8 @@ public class SignResponse {
         this.name = admin.getName();
         this.account = admin.getAccount();
         this.password = admin.getPassword();
-        this.roles = admin.getRoles();
+        this.roles = admin.getRoles().stream()
+                .map(Authority::getName)
+                .collect(Collectors.toList());
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -40,7 +41,7 @@ public class SignService {
                 .name(findAdmin.getName())
                 .account(findAdmin.getAccount())
                 .token(jwtProvider.createToken(findAdmin.getAccount(), findAdmin.getRoles()))
-                .roles(findAdmin.getRoles())
+                .roles(findAdmin.getRoles().stream().map(Authority::getName).collect(Collectors.toList()))
                 .build();
     }
 

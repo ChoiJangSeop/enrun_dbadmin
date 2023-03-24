@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -28,6 +29,7 @@ import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableWebSecurity(debug = true)
 public class SecurityConfig {
 
     private final JwtProvider jwtProvider;
@@ -41,10 +43,9 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/register", "/login").permitAll()
-                .requestMatchers("/userinfo/**").hasRole("USER_INFO")
-                .requestMatchers("/gifts/**").hasRole("GIFT")
-                .requestMatchers("/items/**").hasRole("ITEM")
-                .requestMatchers("/items/**", "/userinfo/**", "/gifts/**", "/admin", "/items").hasRole("ALL")
+                .requestMatchers("/userinfo/**").hasAnyRole("USER_INFO", "All")
+                .requestMatchers("/gifts/**").hasAnyRole("GIFT", "All")
+                .requestMatchers("/items/**").hasAnyRole("ITEM", "All")
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider, corsConfigurationSource()), UsernamePasswordAuthenticationFilter.class)

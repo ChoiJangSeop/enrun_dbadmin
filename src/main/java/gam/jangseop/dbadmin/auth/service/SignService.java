@@ -53,7 +53,7 @@ public class SignService {
                     .password(passwordEncoder.encode(request.getPassword()))
                     .build();
 
-            admin.setRoles(Collections.singletonList(Authority.builder().name("All").build()));
+            admin.setRoles(Collections.singletonList(Authority.builder().name("ROLE_All").build()));
 
             adminRepository.save(admin);
             return new SignResponse(admin);

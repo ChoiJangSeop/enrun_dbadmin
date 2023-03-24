@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Builder @AllArgsConstructor @NoArgsConstructor
 public class Authority {
 
-    @GeneratedValue @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) @Id
     @Column(name = "AUTHORITY_ID")
     private Long id;
 

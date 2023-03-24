@@ -1,16 +1,16 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    jdbc-url: jdbc:h2:tcp://localhost/~/er_db-admin-test
+    url: jdbc:h2:tcp://localhost/~/er_db-admin-test
     username: sa
     password:
 
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
-        hbm2ddl:
-          auto: update
 jwt:
   secret:
     key: D(G+KbPeShVkYp3s6v9y$B&E)H@McQfT

@@ -40,6 +40,9 @@ public class JwtProvider {
 
     // 토큰 생성
     public String createToken(String account, List<Authority> roles) {
+
+        roles.stream().map(role -> "ROLE_" + role);
+
         Claims claims = Jwts.claims().setSubject(account);
         claims.put("roles", roles);
         Date now = new Date();
@@ -59,7 +62,7 @@ public class JwtProvider {
 
     public String getAccountFromToken(String token) {
         return Jwts.parserBuilder().setSigningKey(secretKey).build()
-                .parseClaimsJwt(token).getBody()
+                .parseClaimsJws(token).getBody()
                 .getSubject();
     }
 
@@ -70,10 +73,10 @@ public class JwtProvider {
     public boolean validateToken(String token) {
         try {
             // validate bearer
-            if (!token.substring(0, "Bearer ".length()).equals("BEARER ")) return false;
+            if (!token.substring(0, "Bearer ".length()).equals("Bearer ")) return false;
             token = token.split(" ")[1].trim();
 
-            Jwt<Header, Claims> claims = Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJwt(token);
+            Jws<Claims> claims = Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token);
             return !claims.getBody().getExpiration().before(new Date());
         } catch (Exception e) {
             return false;

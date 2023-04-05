@@ -2,6 +2,7 @@ package gam.jangseop.dbadmin.auth.service;
 
 import gam.jangseop.dbadmin.auth.domain.Admin;
 import gam.jangseop.dbadmin.auth.domain.Authority;
+import gam.jangseop.dbadmin.auth.domain.Status;
 import gam.jangseop.dbadmin.auth.dto.SignRequest;
 import gam.jangseop.dbadmin.auth.dto.SignResponse;
 import gam.jangseop.dbadmin.auth.repository.AdminRepository;
@@ -42,6 +43,7 @@ public class SignService {
                 .account(findAdmin.getAccount())
                 .token(jwtProvider.createToken(findAdmin.getAccount(), findAdmin.getRoles()))
                 .roles(findAdmin.getRoles().stream().map(Authority::getName).collect(Collectors.toList()))
+                .status(findAdmin.getStatus())
                 .build();
     }
 
@@ -51,6 +53,7 @@ public class SignService {
                     .name(request.getName())
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))
+                    .status(Status.NOT_ALLOWED)
                     .build();
 
             admin.setRoles(Collections.singletonList(Authority.builder().name("ROLE_All").build()));
@@ -66,9 +69,23 @@ public class SignService {
 
     public SignResponse getAdmin(String account) throws Exception {
         Admin findAdmin = adminRepository.findOneByAccount(account);
+
         return new SignResponse(findAdmin);
     }
 
+    public SignResponse allowAdmin(String account) throws Exception {
+
+        try {
+            Admin findAdmin = adminRepository.findOneByAccount(account);
+            findAdmin.allow();
+
+            return new SignResponse(findAdmin);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new Exception("잘못된 계정 정보입니다.");
+        }
+
+    }
 
 
 }

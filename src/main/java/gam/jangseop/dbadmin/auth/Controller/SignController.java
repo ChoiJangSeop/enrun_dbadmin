@@ -32,4 +32,9 @@ public class SignController {
         return new ResponseEntity<>(signService.getAdmin(account), HttpStatus.OK);
     }
 
+    @PutMapping("/admin/{account}/allow")
+    public ResponseEntity<SignResponse> allowAdmin(@PathVariable String account) throws Exception {
+        return new ResponseEntity<>(signService.allowAdmin(account), HttpStatus.OK);
+    }
+
 }

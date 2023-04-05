@@ -27,6 +27,9 @@ public class Admin {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @OneToMany(mappedBy = "admin", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Builder.Default
     private List<Authority> roles = new ArrayList<>();
@@ -66,5 +69,13 @@ public class Admin {
     public void setRoles(List<Authority> roles) {
         this.roles = roles;
         roles.forEach(o -> o.setAdmin(this));
+    }
+
+    public void allow() {
+        this.status = Status.ALLOWED;
+    }
+
+    public void disallow() {
+        this.status = Status.NOT_ALLOWED;
     }
 }

@@ -30,4 +30,9 @@ public class AdminRepository {
         if (findAdmins.isEmpty()) return null;
         return findAdmins.get(0);
     }
+
+    public List<Admin> findAll() {
+        return em.createQuery("select a from Admin a", Admin.class)
+                .getResultList();
+    }
 }

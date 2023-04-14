@@ -34,12 +34,16 @@ public class GiftService {
     @Transactional
     public Gift create(String sendUserNickname, String receiveUserNickname, String giftItemName, String memo, LocalDateTime expireDate) {
 
-        Long sendUserId = userInfoRepository.findOneByNickname(sendUserNickname).getId();
+
+
+        Long sendUserId = (sendUserNickname.equals("_system")) ?
+                3400L : userInfoRepository.findOneByNickname(sendUserNickname).getId();
         Long receiveUserId = userInfoRepository.findOneByNickname(receiveUserNickname).getId();
         Long giftItemId = itemRepository.findOneByName(giftItemName).getId();
 
         Gift gift = Gift.createGift(sendUserId, receiveUserId, giftItemId, expireDate, memo);
         gift.setSendUserNickname(sendUserNickname);
+        if (sendUserNickname.equals("_system")) gift.setSendUserNickname("");
 
         giftRepository.save(gift);
 

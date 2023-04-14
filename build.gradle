@@ -39,7 +39,7 @@ dependencies {
 }
 
 bootWar {
-	archiveName("gam-db-admin-0.1.0.war")
+	archiveName("gam-db-admin-1.1.0.war")
 }
 
 tasks.named('test') {

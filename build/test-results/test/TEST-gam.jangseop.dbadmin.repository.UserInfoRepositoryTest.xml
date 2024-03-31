@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="gam.jangseop.dbadmin.repository.UserInfoRepositoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-03-31T06:11:26" hostname="jangseopui-MacBookPro.local" time="0.023">
+  <properties/>
+  <testcase name="유저정보_단건조회()" classname="gam.jangseop.dbadmin.repository.UserInfoRepositoryTest" time="0.002"/>
+  <testcase name="유저정보_전체조회()" classname="gam.jangseop.dbadmin.repository.UserInfoRepositoryTest" time="0.01"/>
+  <testcase name="유저정보_닉네임조회()" classname="gam.jangseop.dbadmin.repository.UserInfoRepositoryTest" time="0.007"/>
+  <system-out><![CDATA[2024-03-31T15:11:26.809+09:00  INFO 33992 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [gam.jangseop.dbadmin.repository.UserInfoRepositoryTest]: UserInfoRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-03-31T15:11:26.813+09:00  INFO 33992 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration gam.jangseop.dbadmin.DbAdminApplication for test class gam.jangseop.dbadmin.repository.UserInfoRepositoryTest
+2024-03-31T15:11:26.816+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.822+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.823+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.823+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.826+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.fdusernum,
+        u1_0.fduid,
+        u1_0.fdattribute,
+        u1_0.fdauthusernum,
+        u1_0.fdchannelnum,
+        u1_0.fdinserttime,
+        u1_0.fdnickname,
+        u1_0.fdoption 
+    from
+        userinfo u1_0
+2024-03-31T15:11:26.832+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.835+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.fdusernum,
+        u1_0.fduid,
+        u1_0.fdattribute,
+        u1_0.fdauthusernum,
+        u1_0.fdchannelnum,
+        u1_0.fdinserttime,
+        u1_0.fdnickname,
+        u1_0.fdoption 
+    from
+        userinfo u1_0 
+    where
+        u1_0.fdnickname=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

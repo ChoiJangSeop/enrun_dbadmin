@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="gam.jangseop.dbadmin.controller.GiftControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-31T06:11:26" hostname="jangseopui-MacBookPro.local" time="0.011">
+  <properties/>
+  <testcase name="선물_단건생성요청()" classname="gam.jangseop.dbadmin.controller.GiftControllerTest" time="0.011"/>
+  <system-out><![CDATA[2024-03-31T15:11:26.793+09:00  INFO 33992 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [gam.jangseop.dbadmin.controller.GiftControllerTest]: GiftControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-03-31T15:11:26.795+09:00  INFO 33992 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration gam.jangseop.dbadmin.DbAdminApplication for test class gam.jangseop.dbadmin.controller.GiftControllerTest
+2024-03-31T15:11:26.798+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        tblavataritemdesc
+        (fditemnum, fditemname) 
+    values
+        (default, ?)
+2024-03-31T15:11:26.799+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        tblavataritemdesc
+        (fditemnum, fditemname) 
+    values
+        (default, ?)
+2024-03-31T15:11:26.800+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.801+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.805+09:00  INFO 33992 --- [    Test worker] Spring Security Debugger                 : 
+
+************************************************************
+
+Request received for POST '/gifts':
+
+org.springframework.mock.web.MockHttpServletRequest@7c7478ac
+
+servletPath:
+pathInfo:/gifts
+headers: 
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Content-Length: 177
+
+
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextHolderFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  JwtAuthenticationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  SessionManagementFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+
+
+************************************************************
+
+
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /gifts
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Accept:"application/json", Content-Length:"177"]
+             Body = {"sendUserNickname":"user1","receiveUserNickname":"user2","giftItemName":"item1","memo":"memo","sendDate":"2024-03-31T15:11:26.802061","expireDate":"2024-03-31T15:11:26.802066"}
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 401
+    Error message = null
+          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"text/html; charset=UTF-8", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = text/html; charset=UTF-8
+             Body = 인증에 실패하였습니다
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

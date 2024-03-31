@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="gam.jangseop.dbadmin.service.GiftServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-31T06:11:26" hostname="jangseopui-MacBookPro.local" time="0.009">
+  <properties/>
+  <testcase name="선물_생성()" classname="gam.jangseop.dbadmin.service.GiftServiceTest" time="0.009"/>
+  <system-out><![CDATA[2024-03-31T15:11:26.840+09:00  INFO 33992 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [gam.jangseop.dbadmin.service.GiftServiceTest]: GiftServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-03-31T15:11:26.844+09:00  INFO 33992 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration gam.jangseop.dbadmin.DbAdminApplication for test class gam.jangseop.dbadmin.service.GiftServiceTest
+2024-03-31T15:11:26.847+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        userinfo
+        (fdusernum, fduid, fdattribute, fdauthusernum, fdchannelnum, fdinserttime, fdnickname, fdoption) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?)
+2024-03-31T15:11:26.850+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        tblgift
+        (fdnum, fdexpiredate, fdgiftitemdescnum, fdmemo, fdnotified, fdreceiveusernum, fdsenddatetime, fdsendusernum, fdsendnickname) 
+    values
+        (default, ?, ?, ?, ?, ?, ?, ?, ?)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

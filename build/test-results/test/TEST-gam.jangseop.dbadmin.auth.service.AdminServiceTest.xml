@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="gam.jangseop.dbadmin.auth.service.AdminServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-03-31T06:11:26" hostname="jangseopui-MacBookPro.local" time="0.177">
+  <properties/>
+  <testcase name="관리자_생성()" classname="gam.jangseop.dbadmin.auth.service.AdminServiceTest" time="0.143"/>
+  <testcase name="관리자_비밀번호변경()" classname="gam.jangseop.dbadmin.auth.service.AdminServiceTest" time="0.007"/>
+  <testcase name="관리자_비밀번호변경_실패()" classname="gam.jangseop.dbadmin.auth.service.AdminServiceTest" time="0.005"/>
+  <testcase name="관리자_생성_이름중복()" classname="gam.jangseop.dbadmin.auth.service.AdminServiceTest" time="0.013"/>
+  <testcase name="관리자_로그인()" classname="gam.jangseop.dbadmin.auth.service.AdminServiceTest" time="0.007"/>
+  <system-out><![CDATA[2024-03-31T15:11:26.606+09:00  INFO 33992 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [gam.jangseop.dbadmin.auth.service.AdminServiceTest]: AdminServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-03-31T15:11:26.611+09:00  INFO 33992 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration gam.jangseop.dbadmin.DbAdminApplication for test class gam.jangseop.dbadmin.auth.service.AdminServiceTest
+2024-03-31T15:11:26.753+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.755+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (admin_id, account, name, password) 
+    values
+        (default, ?, ?, ?)
+2024-03-31T15:11:26.759+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.760+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (admin_id, account, name, password) 
+    values
+        (default, ?, ?, ?)
+2024-03-31T15:11:26.766+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.768+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (admin_id, account, name, password) 
+    values
+        (default, ?, ?, ?)
+2024-03-31T15:11:26.772+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.773+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (admin_id, account, name, password) 
+    values
+        (default, ?, ?, ?)
+2024-03-31T15:11:26.779+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.786+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.787+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        admin
+        (admin_id, account, name, password) 
+    values
+        (default, ?, ?, ?)
+2024-03-31T15:11:26.788+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.789+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+2024-03-31T15:11:26.789+09:00 DEBUG 33992 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.admin_id,
+        a1_0.account,
+        a1_0.name,
+        a1_0.password 
+    from
+        admin a1_0 
+    where
+        a1_0.account=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

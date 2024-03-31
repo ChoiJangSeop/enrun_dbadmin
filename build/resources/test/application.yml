@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl:
+          auto: create
+jwt:
+  secret:
+    key: D(G+KbPeShVkYp3s6v9y$B&E)H@McQfT
+
+
+logging.level:
+  org.hibernate.SQL: debug
+
+server:
+  port: 8080

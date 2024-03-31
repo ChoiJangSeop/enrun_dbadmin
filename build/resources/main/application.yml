@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/er_db-admin-test
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+jwt:
+  secret:
+    key: D(G+KbPeShVkYp3s6v9y$B&E)H@McQfT
+
+
+logging.level:
+  org.hibernate.SQL: debug
+
+server:
+  port: 8080

@@ -27,7 +27,7 @@ public class SignController {
         return new ResponseEntity<>(signService.register(request), HttpStatus.OK);
     }
 
-    @GetMapping("/admin/{account}")
+    @GetMapping("/register/{account}")
     public ResponseEntity<SignResponse> getAdmin(@PathVariable String account) throws Exception {
         return new ResponseEntity<>(signService.getAdmin(account), HttpStatus.OK);
     }
